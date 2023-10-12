@@ -6,6 +6,8 @@
 - A Unit Test test script using JUnit Test framework
 - A CI script running on Github Action
 
+![Test script with JUnit](https://github.com/haunguyendev/math-util-mvn-sap1701/blob/main/screenshot/test-script%20with%20jUnit.png)
+
 #### Connect me via haunt150603@gmail.com
 
 ##### Copyright &#169; 2023 hau.nguyen.dev
