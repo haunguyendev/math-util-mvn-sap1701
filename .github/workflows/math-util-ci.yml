@@ -1,0 +1,33 @@
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Math Utility Repo applying CI # tên của nhóm công việc cần phải làm khi ai đó push code!
+
+on:
+  push:
+    branches: [ "main" ] # Bất kì khi nào mà ai đó push code lên nhanh main
+  pull_request:
+    branches: [ "main" ]
+
+jobs:                        # thì làm các việc dưới đấy
+  build:
+
+    runs-on: ubuntu-latest       # Mượn 1 cái server của Mỹ, cài sẵn hệ điều handh Ubuntu
+
+    steps:                          #2. Làm thêm các bước sau trên server vừa mượn
+    - uses: actions/checkout@v3     #2.1 Láy toàn bộ code từ kho sang server
+    - name: Set up JDK 20           #2.2 Mượn JDK nào đó trên server, 20
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven        #2.3 CHuẩn bị chạy lệnh đóng gói app, chạy luôn Unit test
+      run: mvn -B package --file pom.xml
+
+   
